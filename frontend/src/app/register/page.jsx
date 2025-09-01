@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useState } from "react";
 
 export default function page() {
@@ -25,6 +26,17 @@ export default function page() {
             return;
         } 
         console.log("Form submitted:", formData);
+
+        // Send data to backend
+        try {
+            const response = axios.post('http://localhost:5000/api/users/register', formData);
+            console.log("Server response:", response.data);
+            alert("Registration successful!");
+        } catch (error) {
+            console.log("Error submitting form:", error);
+            
+        }
+
     };
 
     return (

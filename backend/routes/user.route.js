@@ -1,0 +1,11 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const router = express.Router();
+const userController = require('../controllers/user.controller');
+
+router.use(bodyParser.json());
+
+router.route("/register").post(userController.registerUser);
+
+
+module.exports = router;
