@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function page() {
     const [formData, setFormData] = useState({
-        name: "",
+        username: "",
         email: "",
         phone: "",
         password: "",
@@ -19,7 +19,7 @@ export default function page() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  async (e) => {
         e.preventDefault();
         if(formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
@@ -29,11 +29,20 @@ export default function page() {
 
         // Send data to backend
         try {
-            const response = axios.post('http://localhost:5000/api/users/register', formData);
-            console.log("Server response:", response.data);
-            alert("Registration successful!");
+            const response = await axios.post('http://localhost:5000/api/users/register', formData);
+            console.log("Server response:", response);
+
+            if(response.data.success === true) {
+                alert("Registration successful: " + response.data.message);
+                return;
+            }
+            
         } catch (error) {
             console.log("Error submitting form:", error);
+            if(error?.response?.data?.success === false) {
+                alert("Registration failed: " + error?.response?.data?.message);
+                return;
+            }
             
         }
 
@@ -53,9 +62,9 @@ export default function page() {
                         </label>
                         <input
                             type="text"
-                            name="name"
+                            name="username"
                             placeholder="Enter your full name"
-                            value={formData.name}
+                            value={formData.username}
                             onChange={handleChange}
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             required
