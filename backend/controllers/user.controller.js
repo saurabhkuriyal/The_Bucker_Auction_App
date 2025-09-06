@@ -25,7 +25,7 @@ async function registerUser(req,res) {
         const newUser = new User({ username, email, password, phone });
         await newUser.save();
 
-        return res.status(201).json({success:true,message: "User registered successfully"});
+        return res.status(201).json({success:true,data:newUser,message: "User registered successfully"});
         
     } catch (error) {
         console.log("user registration error",error);

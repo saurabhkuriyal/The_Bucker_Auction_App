@@ -34,6 +34,8 @@ export default function page() {
 
             if(response.data.success === true) {
                 alert("Registration successful: " + response.data.message);
+                console.log("Registration successful:", response.data.data);
+                
                 return;
             }
             
