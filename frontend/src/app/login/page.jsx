@@ -1,14 +1,19 @@
 "use client";
+import { setUser } from "@/lib/features/userSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function LoginPage() {
+    const router = useRouter();
     const dispatch = useAppDispatch();
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
+
+
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,31 +23,34 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const response= await axios.post('http://localhost:5000/api/users/login', form);
+            const response = await axios.post('http://localhost:5000/api/users/login', form);
             console.log("Login successful:", response.data);
 
-            if(response.data.success){
-                window.location.href = '/'; // Redirect to home page
+            if (response.data.success) {
+
                 alert("Login successful");
-                
+
+                console.log("uh-----",response.data.data._id);
                 
                 dispatch(
-                    setuser({
-                        userId:response.data.data._id,
-                        username:response.data.data.username,
-                        email:response.data.data.email,
-                        role:response.data.data.role
+                    setUser({
+                        userId: response.data.data._id,
+                        username: response.data.data.username,
+                        email: response.data.data.email,
+                        role: response.data.data.role
                     })
                 )
-                
-                
+
+                router.push(`/`);
+
+                //window.location.href = '/'; // Redirect to home page
             } else {
                 alert(response.data.data.message);
             }
-            
+
 
         } catch (error) {
-            log("Login error:", error);
+            console.log("Login error:", error);
         }
         console.log(form);
     };
