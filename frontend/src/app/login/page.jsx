@@ -1,10 +1,12 @@
 "use client";
+import { useAppDispatch } from "@/lib/hooks";
+import axios from "axios";
 import { useState } from "react";
 
 export default function LoginPage() {
+    const dispatch = useAppDispatch();
     const [form, setForm] = useState({
         email: "",
-        phone: "",
         password: "",
     });
 
@@ -12,8 +14,36 @@ export default function LoginPage() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        try {
+            const response= await axios.post('http://localhost:5000/api/users/login', form);
+            console.log("Login successful:", response.data);
+
+            if(response.data.success){
+                window.location.href = '/'; // Redirect to home page
+                alert("Login successful");
+                
+                
+                dispatch(
+                    setuser({
+                        userId:response.data.data._id,
+                        username:response.data.data.username,
+                        email:response.data.data.email,
+                        role:response.data.data.role
+                    })
+                )
+                
+                
+            } else {
+                alert(response.data.data.message);
+            }
+            
+
+        } catch (error) {
+            log("Login error:", error);
+        }
         console.log(form);
     };
 
@@ -48,7 +78,7 @@ export default function LoginPage() {
                         </div>
 
                         {/* Phone Number */}
-                        <div>
+                        {/* <div>
                             <label
                                 htmlFor="phone"
                                 className="block text-sm font-medium text-gray-700"
@@ -65,7 +95,7 @@ export default function LoginPage() {
                                 className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                                 placeholder="Enter your phone number"
                             />
-                        </div>
+                        </div> */}
 
                         {/* Password */}
                         <div>

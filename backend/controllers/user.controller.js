@@ -35,4 +35,38 @@ async function registerUser(req,res) {
     }
 }
 
-module.exports = { registerUser };
+
+async function loginUser(req,res) {
+    try {
+        const { email, password } = req.body;
+
+        console.log("reacher here",req.body);
+        
+
+        if(!email || !password) {
+            return res.status(400).json({success:false,message: "Email and password are required"});
+        }
+
+        // Find user by email
+        const user = await User.findOne({ email });
+        if(!user) {
+            return res.status(400).json({success:false,message: "Invalid email or password"});
+        }
+
+        // Check password
+        if(user.password !== password) {
+            return res.status(400).json({success:false,message: "Invalid email or password"});
+        }
+
+        // Successful login
+        return res.status(200).json({success:true,data:user,message: "Login successful"});
+
+    } catch (error) {
+        console.log("user login error",error);
+        return res.status(500).json({success:false, message: "Internal Server Error"});
+    }
+}
+
+module.exports = { registerUser,
+                loginUser
+ };

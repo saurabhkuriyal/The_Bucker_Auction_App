@@ -1,4 +1,17 @@
+"use client"
+
+import { useAppSelector } from "@/lib/hooks";
+
 export default function Home() {
+
+  const id = useAppSelector((state) => state.userId);
+  const username = useAppSelector((state) => state.username);
+
+  console.log("HHOOMME",id);
+  console.log("HHOOMMEE UUSSEERRMMAE-----",username);
+  
+  
+
   return (
     <div className="mx-5 my-3">
       {/* Hero Image */}
