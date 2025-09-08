@@ -14,7 +14,7 @@ import {
 // Menu items.
 const items = [
     { title: "Home", url: "/admin", icon: Home },
-    { title: "Inbox", url: "/admin/inbox", icon: Inbox },
+    { title: "Inbox", url: "/admin/users", icon: Inbox },
     { title: "Calendar", url: "/admin/calendar", icon: Calendar },
     { title: "Search", url: "/admin/search", icon: Search },
     { title: "Settings", url: "/admin/settings", icon: Settings },
