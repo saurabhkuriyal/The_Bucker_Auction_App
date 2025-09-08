@@ -1,4 +1,4 @@
-import Header from "@/components/custom/Header";
+import HeaderGate from "@/components/custom/HeaderGate";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
@@ -20,16 +20,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StoreProvider>
-        <div className="container mx-auto px-4">
-        <Header/>
-        {children}
-        </div>
+
+
+          <div className="container mx-auto px-4">
+            <HeaderGate />
+            {children}
+          </div>
+
+
         </StoreProvider>
       </body>
     </html>

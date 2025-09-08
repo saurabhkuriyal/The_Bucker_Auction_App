@@ -6,9 +6,12 @@ export default function Home() {
 
   const id = useAppSelector((state) => state.userId);
   const username = useAppSelector((state) => state.username);
+  const role = useAppSelector((state) => state.role);
 
   console.log("HHOOMME",id);
   console.log("HHOOMMEE UUSSEERRMMAE-----",username);
+  console.log("HHOOMMEE ROLLEE-----",role);
+  
   
   
 

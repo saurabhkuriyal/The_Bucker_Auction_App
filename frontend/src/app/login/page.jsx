@@ -41,7 +41,13 @@ export default function LoginPage() {
                     })
                 )
 
-                router.push(`/`);
+                if(response.data.data.role==="ADMIN"){
+                    router.push("/admin")
+                }else{
+                        router.push(`/`);
+                }
+
+                
 
                 //window.location.href = '/'; // Redirect to home page
             } else {
