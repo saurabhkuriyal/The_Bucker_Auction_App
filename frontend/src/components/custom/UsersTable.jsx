@@ -4,10 +4,11 @@ import axios from "axios";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
 
-export default function UsersTable({ initialUsers = [] }) {
-  const [users, setUsers] = useState(Array.isArray(initialUsers) ? initialUsers : []);
+export default function UsersTable(props) {
+  let [users, setUsers] = useState(props.initialUsers || []);
   const [busyId, setBusyId] = useState(null);
-
+  console.log("UsersTable initialUsers:", users);
+  
   const handleDelete = async (id) => {
     if (!confirm("Delete this user?")) return;
     setBusyId(id);
@@ -40,7 +41,7 @@ export default function UsersTable({ initialUsers = [] }) {
             </tr>
           </thead>
           <tbody className="divide-y">
-            {initialUsers.map((u, idx) => (
+            {props.initialUsers.map((u, idx) => (
               <tr key={u._id || idx} className="hover:bg-gray-50">
                 <td className="px-4 py-3">{idx + 1}</td>
                 <td className="px-4 py-3">{u.username || "-"}</td>
@@ -64,7 +65,7 @@ export default function UsersTable({ initialUsers = [] }) {
                 </td>
               </tr>
             ))}
-            {users.length === 0 && (
+            {props.initialUsers.length === 0 && (
               <tr>
                 <td colSpan={6} className="px-4 py-6 text-center text-gray-500">
                   No users found.
