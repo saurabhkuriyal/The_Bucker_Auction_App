@@ -18,7 +18,8 @@ export default function page() {
 
     return (
     <div>
-
+        <h1 className="text-2xl font-bold mb-4">Flyer Page</h1>
+        <p>This is the flyer page content.</p>
     </div>
   )
 }
