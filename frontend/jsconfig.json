@@ -5,3 +5,4 @@
     }
   }
 }
+// error can occured if you don't restart your dev server after modifying jsconfig.json
