@@ -30,7 +30,7 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
     );
   }, [users, query]);
 
-  // ---------- Actions -------------
+  // ---------- Actions ----------
   const openEdit = (u) => {
     setEditingUser(u);
     setEditForm({
