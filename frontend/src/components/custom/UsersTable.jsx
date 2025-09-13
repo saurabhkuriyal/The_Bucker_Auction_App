@@ -9,6 +9,10 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
   const [busyId, setBusyId] = useState(null);
   const [query, setQuery] = useState("");
 
+  console.log("Initial users:", initialUsers);
+  console.log("Users state:", users);
+  
+
   // Edit modal state
   const [editingUser, setEditingUser] = useState(null);
   const [editForm, setEditForm] = useState({ username: "", role: "", phone: "", email: "" });
