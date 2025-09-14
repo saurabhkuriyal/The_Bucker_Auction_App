@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { Pencil, Search as SearchIcon, Trash2, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function UsersTable({ initialUsers = [], apiBase = "http://localhost:5000" }) {
   const [users, setUsers] = useState(Array.isArray(initialUsers) ? initialUsers : []);
@@ -11,7 +11,15 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
 
   console.log("Initial users:", initialUsers);
   console.log("Users state:", users);
-  
+
+  // Sync users state with initialUsers prop actualu what happens iseState not changes bu changing ot Initialuser thats why we have to yse yseEffect
+  useEffect(() => {
+    if (Array.isArray(initialUsers)) {
+      setUsers(initialUsers);
+    } else {
+      setUsers([]);
+    }
+  }, [initialUsers]);
 
   // Edit modal state
   const [editingUser, setEditingUser] = useState(null);
@@ -142,9 +150,9 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
                     <span
                       className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide
                       ${String(u.role || "USER").toUpperCase() === "ADMIN"
-                        ? "bg-indigo-100 text-indigo-700"
-                        : "bg-emerald-100 text-emerald-700"
-                      }`}
+                          ? "bg-indigo-100 text-indigo-700"
+                          : "bg-emerald-100 text-emerald-700"
+                        }`}
                     >
                       {u.role || "USER"}
                     </span>
@@ -196,9 +204,9 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
                 <span
                   className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide
                   ${String(u.role || "USER").toUpperCase() === "ADMIN"
-                    ? "bg-indigo-100 text-indigo-700"
-                    : "bg-emerald-100 text-emerald-700"
-                  }`}
+                      ? "bg-indigo-100 text-indigo-700"
+                      : "bg-emerald-100 text-emerald-700"
+                    }`}
                 >
                   {u.role || "USER"}
                 </span>

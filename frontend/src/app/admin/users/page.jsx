@@ -1,10 +1,15 @@
 "use client"
 import UsersTable from "@/components/custom/UsersTable";
+import { useAppSelector } from "@/lib/hooks";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function page() {
     const [users, setUsers] = useState([]);
+
+    const role = useAppSelector((state) => state.role);
+    
+    console.log("HHOOMME",role);
 
     useEffect(() => {
         const fetchData = async () => {
