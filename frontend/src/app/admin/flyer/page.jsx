@@ -81,7 +81,7 @@ export default function Page() {
                 {/* Header */}
                 <div className="mb-6 max-w-3xl sm:mb-8">
                     <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-                        Create Content
+                        Manage Flyer Here...
                     </h1>
                     <p className="mt-2 text-sm text-gray-600 sm:text-base">
                         Upload an image, add a title, and write a description. Fully responsive for mobile, laptop, and large monitors.
