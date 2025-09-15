@@ -1,5 +1,6 @@
 "use client";
 
+import JoditEditor from 'jodit-react';
 import {
     FileText,
     Image as ImageIcon,
@@ -11,6 +12,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 export default function Page() {
+    const editor = useRef(null);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState(""); // paragraph-like text
     const [image, setImage] = useState(null);           // File
@@ -186,7 +188,7 @@ export default function Page() {
                                     <FileText className="h-4 w-4 lg:h-5 lg:w-5" />
                                     Description
                                 </label>
-                                <textarea
+                                {/* <textarea
                                     id="description"
                                     name="description"
                                     value={description}
@@ -194,7 +196,17 @@ export default function Page() {
                                     placeholder="Write a brief description…"
                                     rows={6}
                                     className="w-full resize-y rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 sm:text-base"
+                                /> */}
+
+                                <JoditEditor
+                                    ref={editor}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    name="description"
+                                    placeholder="Write a brief description…"
+                                    //className="w-full h-2 resize-y rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 sm:text-base"
                                 />
+
                                 <div className="mt-1 flex justify-end text-xs text-gray-500 sm:text-sm">
                                     {description.length} characters
                                 </div>
