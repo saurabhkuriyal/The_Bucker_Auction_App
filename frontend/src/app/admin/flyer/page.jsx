@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios';
 import JoditEditor from 'jodit-react';
 import {
     FileText,
@@ -60,7 +61,12 @@ export default function Page() {
             // TODO: replace with your API endpoint
             // await fetch("/api/your-endpoint", { method: "POST", body: fd });
 
-            await new Promise((r) => setTimeout(r, 900));
+            const response=await axios.post('http://localhost:5000/api/flyer/createflyer', fd, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log("Here is for the flyer------",response);
             alert("Submitted! Check console for payload.");
             console.log({ title, description, image });
 

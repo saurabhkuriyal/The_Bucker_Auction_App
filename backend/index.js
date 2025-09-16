@@ -5,6 +5,7 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 const connectDB = require('./utils/db');
+const flyerRoutes=require("./routes/flyer.route")
 
 const userRoutes = require('./routes/user.route');
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 // Import routes
 app.use('/api/users', userRoutes);
+app.use('/api/flyer',flyerRoutes);
 
 
 connectDB().then(() => {
