@@ -67,8 +67,7 @@ export default function Page() {
                 }
             });
             console.log("Here is for the flyer------",response);
-            alert("Submitted! Check console for payload.");
-            console.log({ title, description, image });
+            
 
             // reset
             setTitle("");
