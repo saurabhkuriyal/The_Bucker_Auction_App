@@ -67,7 +67,12 @@ export default function Page() {
                 }
             });
             console.log("Here is for the flyer------",response);
-            
+
+            if(response.status===200){
+                alert("Flyer created successfully!");
+            }else{
+                alert("Failed to create flyer. Please try again.");
+            }
 
             // reset
             setTitle("");
