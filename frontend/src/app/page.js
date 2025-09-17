@@ -1,6 +1,8 @@
 "use client"
 
 import { useAppSelector } from "@/lib/hooks";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
 
@@ -8,9 +10,35 @@ export default function Home() {
   const username = useAppSelector((state) => state.username);
   const role = useAppSelector((state) => state.role);
 
+  const [image, setImage]=useState(null);
+  const [title, setTitle]=useState(null);
+  const [description, setDescription]=useState(null);
+
   console.log("HHOOMME",id);
   console.log("HHOOMMEE UUSSEERRMMAE-----",username);
   console.log("HHOOMMEE ROLLEE-----",role);
+
+  useEffect(() => {
+    // Fetch flyer data from the backend
+    const fetchFlyer = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/flyer/getFlyer');
+        console.log("Flyer data:------", response.data.flyers);
+
+        setImage(response.data.flyers.imageUrl);
+        setTitle(response.data.flyers.title);
+        setDescription(response.data.flyers.description);
+
+        console.log(image, 'description');
+        
+        // Handle the fetched flyer data as needed
+      } catch (error) {
+        console.error('Error fetching flyer data:', error);
+      }
+    };
+
+    fetchFlyer();
+  }, []);
   
   
   
@@ -20,7 +48,7 @@ export default function Home() {
       {/* Hero Image */}
       <div className="">
         <img
-          src="/bull.jpeg"
+          src={image}
           alt="Hero Image"
           className="mx-auto object-cover w-full lg:max-w-[500px]"
         />
@@ -32,23 +60,27 @@ export default function Home() {
         <h1 className="text-4xl font-extrabold text-blue-900 md:text-5xl lg:text-6xl mb-2">Performance Sale</h1>
 
         {/* Subtitle */}
-        <p className="italic text-gray-600 mb-6">Follow the link below.</p>
+        <p className=" text-gray-600 mb-6">{title}</p>
 
         {/* Sale Catalog */}
-        <a
+        {/* <a
           href="#"
           className="text-blue-900 font-bold underline hover:text-blue-700 text-lg"
         >
           View Sale Catalog
         </a>
         <p className="text-red-600 font-bold text-2xl mt-2">Wednesday</p>
-        <p className="text-red-600 font-bold text-2xl mb-6">August 20th</p>
+        <p className="text-red-600 font-bold text-2xl mb-6">August 20th</p> */}
 
         {/* Contact Info */}
-        <div className="text-lg text-gray-800 mb-6">
+        {/* <div className="text-lg text-gray-800 mb-6">
           <p className="font-semibold">Jimmy Lathero</p>
           <p>(772) 321-3784</p>
           <p>Fellsmere, Florida</p>
+        </div> */}
+
+        <div className="">
+          {description}
         </div>
 
         {/* Divider */}
