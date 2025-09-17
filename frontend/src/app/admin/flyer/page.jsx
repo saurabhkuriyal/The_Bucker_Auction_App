@@ -61,16 +61,16 @@ export default function Page() {
             // TODO: replace with your API endpoint
             // await fetch("/api/your-endpoint", { method: "POST", body: fd });
 
-            const response=await axios.post('http://localhost:5000/api/flyer/createflyer', fd, {
+            const response = await axios.post('http://localhost:5000/api/flyer/createflyer', fd, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log("Here is for the flyer------",response);
+            console.log("Here is for the flyer------", response);
 
-            if(response.status===200){
+            if (response.status === 200) {
                 alert("Flyer created successfully!");
-            }else{
+            } else {
                 alert("Failed to create flyer. Please try again.");
             }
 
@@ -169,7 +169,7 @@ export default function Page() {
                                     className="mb-2 flex items-center gap-2 text-sm font-medium text-gray-800 lg:text-base"
                                 >
                                     <Type className="h-4 w-4 lg:h-5 lg:w-5" />
-                                    Title
+                                    Flyer Title
                                 </label>
                                 <div className="relative">
                                     <input
@@ -212,9 +212,9 @@ export default function Page() {
                                     ref={editor}
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
-                                    name="description"
+                                    name="Flyer Description"
                                     placeholder="Write a brief description…"
-                                    //className="w-full h-2 resize-y rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 sm:text-base"
+                                //className="w-full h-2 resize-y rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 sm:text-base"
                                 />
 
                                 <div className="mt-1 flex justify-end text-xs text-gray-500 sm:text-sm">
@@ -248,7 +248,7 @@ export default function Page() {
                                     </div>
 
                                     {/* Text preview */}
-                                    <div className="space-y-2 p-4">
+                                    <div className="space-y-2 p-4 flex flex-col items-center text-center">
                                         <div className="text-lg font-semibold text-gray-900">
                                             {title || "Your title will appear here"}
                                         </div>
