@@ -14,6 +14,6 @@ const upload = multer({
 router.use(bodyParser.json());
 
 router.route("/createflyer").post(upload.single('image'), flyerController.createFlyer);
-//router.route("/").get(flyerController.getAllFlyers);
+router.route("/getFlyer").get(flyerController.getFlyers);
 
 module.exports = router;

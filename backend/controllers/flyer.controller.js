@@ -12,13 +12,13 @@ async function createFlyer(req,res) {
             cloudinary.config({
                 cloud_name: "deuofkrkf",
                 api_key:process.env.CLOUDINARY_API_KEY,
-                api_secret: "vrtWkACC1-Tra5I0WzJ6tIsstLw"
+                api_secret: process.env.CLOUNDINARY_API_SECRET
             });
 
             const result = await cloudinary.uploader.upload(req.file.path);
             console.log(result.secure_url, 'uploaded.secure_url');
             flyerImage = result.secure_url;
-        }
+        }        
 
         const { title, description, } = req.body;
 
@@ -27,6 +27,8 @@ async function createFlyer(req,res) {
             description,
             imageUrl: flyerImage,
         });
+
+        await newFlyer.save();
 
         console.log("new flyer details----",newFlyer);
         
@@ -40,4 +42,19 @@ async function createFlyer(req,res) {
     }
 }
 
-module.exports = { createFlyer };
+
+async function getFlyers(req, res) {
+    try {
+        const flyers = await Flyer.findOne().sort({ createdAt: -1 });
+
+        console.log("Fetched flyers:", flyers);
+        
+        return res.status(200).json({ success: true, flyers });
+    }   catch (error) {
+        console.error("Error fetching flyers:", error);
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+}
+module.exports = { createFlyer,
+    getFlyers
+ };
