@@ -1,6 +1,5 @@
 "use client";
 
-import axios from 'axios';
 import JoditEditor from 'jodit-react';
 import {
     FileText,
@@ -61,18 +60,21 @@ export default function Page() {
             // TODO: replace with your API endpoint
             // await fetch("/api/your-endpoint", { method: "POST", body: fd });
 
-            const response = await axios.post('http://localhost:5000/api/flyer/createflyer', fd, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            console.log("Here is for the flyer------", response);
+            // const response = await axios.post('http://localhost:5000/api/flyer/createflyer', fd, {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data'
+            //     }
+            // });
+            // console.log("Here is for the flyer------", response);
 
-            if (response.status === 200) {
-                alert("Flyer created successfully!");
-            } else {
-                alert("Failed to create flyer. Please try again.");
-            }
+            // if (response.status === 200) {
+            //     alert("Flyer created successfully!");
+            // } else {
+            //     alert("Failed to create flyer. Please try again.");
+            // }
+
+            console.log("there is the descritpin----", description);
+
 
             // reset
             setTitle("");
@@ -85,6 +87,12 @@ export default function Page() {
             setSubmitting(false);
         }
     };
+
+    function stripHtml(html) {
+        const div = document.createElement("div");
+        div.innerHTML = html;
+        return div.textContent || div.innerText || "";
+    }
 
     return (
         <div className="min-h-[calc(100vh-3.5rem)] w-full bg-gradient-to-b from-white to-gray-50">
@@ -211,10 +219,9 @@ export default function Page() {
                                 <JoditEditor
                                     ref={editor}
                                     value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    name="Flyer Description"
+                                    onChange={newContent => setDescription(newContent)}
+                                    name="description"
                                     placeholder="Write a brief description…"
-                                //className="w-full h-2 resize-y rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-indigo-500 sm:text-base"
                                 />
 
                                 <div className="mt-1 flex justify-end text-xs text-gray-500 sm:text-sm">
@@ -253,7 +260,7 @@ export default function Page() {
                                             {title || "Your title will appear here"}
                                         </div>
                                         <p className="text-sm leading-6 text-gray-700 whitespace-pre-wrap">
-                                            {description || "Your description will appear here."}
+                                            {stripHtml(description) || "Your description will appear here."}
                                         </p>
                                     </div>
                                 </div>
