@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios';
 import JoditEditor from 'jodit-react';
 import {
     FileText,
@@ -60,18 +61,18 @@ export default function Page() {
             // TODO: replace with your API endpoint
             // await fetch("/api/your-endpoint", { method: "POST", body: fd });
 
-            // const response = await axios.post('http://localhost:5000/api/flyer/createflyer', fd, {
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data'
-            //     }
-            // });
-            // console.log("Here is for the flyer------", response);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/flyer/createflyer`, fd, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log("Here is for the flyer------", response);
 
-            // if (response.status === 200) {
-            //     alert("Flyer created successfully!");
-            // } else {
-            //     alert("Failed to create flyer. Please try again.");
-            // }
+            if (response.status === 200) {
+                alert("Flyer created successfully!");
+            } else {
+                alert("Failed to create flyer. Please try again.");
+            }
 
             console.log("there is the descritpin----", description);
 

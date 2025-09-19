@@ -27,6 +27,8 @@ export default function Home() {
 
         setImage(response.data.flyers.imageUrl);
         setTitle(response.data.flyers.title);
+
+        
         setDescription(response.data.flyers.description);
 
         console.log(image, 'description');
@@ -40,7 +42,11 @@ export default function Home() {
     fetchFlyer();
   }, []);
   
-  
+  function stripHtml(html) {
+        const div = document.createElement("div");
+        div.innerHTML = html;
+        return div.textContent || div.innerText || "";
+    }
   
 
   return (
@@ -80,7 +86,7 @@ export default function Home() {
         </div> */}
 
         <div className="">
-          {description}
+          {stripHtml(description)}
         </div>
 
         {/* Divider */}

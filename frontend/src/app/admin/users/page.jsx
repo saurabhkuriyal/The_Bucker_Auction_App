@@ -14,7 +14,7 @@ export default function page() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/users/getAllUser');
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/users/getAllUser`);
                 console.log('User data:', response.data);
                 console.log('User data:', response.data.data);
 

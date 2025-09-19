@@ -23,7 +23,8 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5000/api/users/login', form);
+            //const response = await axios.post('http://localhost:5000/api/users/login', form);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/users/login`, form);
             console.log("Login successful:", response.data);
 
             if (response.data.success) {
