@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 app.use('/api/users', userRoutes);
 app.use('/api/flyer',flyerRoutes);
 
+app.get("/", (req, res) => {
+    res.send("API is running....");
+});
 
 connectDB().then(() => {
     app.listen(port, () => {
