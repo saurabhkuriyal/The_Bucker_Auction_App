@@ -1,6 +1,7 @@
 "use client";
 
 import axios from 'axios';
+import parse from 'html-react-parser';
 import JoditEditor from 'jodit-react';
 import {
     FileText,
@@ -11,6 +12,7 @@ import {
     X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+
 
 export default function Page() {
     const editor = useRef(null);
@@ -89,11 +91,6 @@ export default function Page() {
         }
     };
 
-    function stripHtml(html) {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        return div.textContent || div.innerText || "";
-    }
 
     return (
         <div className="min-h-[calc(100vh-3.5rem)] w-full bg-gradient-to-b from-white to-gray-50">
@@ -260,9 +257,9 @@ export default function Page() {
                                         <div className="text-lg font-semibold text-gray-900">
                                             {title || "Your title will appear here"}
                                         </div>
-                                        <p className="text-sm leading-6 text-gray-700 whitespace-pre-wrap">
-                                            {stripHtml(description) || "Your description will appear here."}
-                                        </p>
+                                        <div className="text-sm leading-6 text-gray-700 whitespace-pre-wrap">
+                                            {parse(String(description)) || "Your description will appear here."}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

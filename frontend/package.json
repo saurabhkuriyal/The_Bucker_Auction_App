@@ -20,6 +20,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.2",
+    "html-react-parser": "^5.2.6",
     "jodit-react": "^5.2.19",
     "lucide-react": "^0.539.0",
     "next": "15.4.6",

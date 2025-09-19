@@ -2,6 +2,7 @@
 
 import { useAppSelector } from "@/lib/hooks";
 import axios from "axios";
+import parse from 'html-react-parser';
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -41,12 +42,8 @@ export default function Home() {
 
     fetchFlyer();
   }, []);
-  
-  function stripHtml(html) {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        return div.textContent || div.innerText || "";
-    }
+
+
   
 
   return (
@@ -62,8 +59,8 @@ export default function Home() {
 
       <div className="flex flex-col items-center justify-center my-4 px-4 text-center">
         {/* Heading */}
-        <h1 className="text-4xl font-extrabold text-blue-900 lg:text-6xl">Yearling</h1>
-        <h1 className="text-4xl font-extrabold text-blue-900 md:text-5xl lg:text-6xl mb-2">Performance Sale</h1>
+        {/* <h1 className="text-4xl font-extrabold text-blue-900 lg:text-6xl">Yearling</h1>
+        <h1 className="text-4xl font-extrabold text-blue-900 md:text-5xl lg:text-6xl mb-2">Performance Sale</h1> */}
 
         {/* Subtitle */}
         <p className=" text-gray-600 mb-6">{title}</p>
@@ -86,7 +83,7 @@ export default function Home() {
         </div> */}
 
         <div className="">
-          {stripHtml(description)}
+          {parse(String(description))}
         </div>
 
         {/* Divider */}
