@@ -1,4 +1,10 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+    FileText, // for flyers or documents
+    Gavel,
+    Home, // for dashboard
+    Users, // for "Sale Ring" (auction hammer)
+    Wrench, // for settings / to be added
+} from "lucide-react";
 import Link from 'next/link';
 
 import {
@@ -15,10 +21,11 @@ import {
 // Menu items.
 const items = [
     { title: "Home", url: "/admin", icon: Home },
-    { title: "Inbox", url: "/admin/users", icon: Inbox },
-    { title: "Calendar", url: "/admin/flyer", icon: Calendar },
-    { title: "Search", url: "/admin/search", icon: Search },
-    { title: "Settings", url: "/admin/settings", icon: Settings },
+    { title: "Users", url: "/admin/users", icon: Users },
+    { title: "Flyer", url: "/admin/flyer", icon: FileText },
+    { title: "Sale Ring", url: "/admin/search", icon: Gavel },
+    { title: "To Be Added", url: "/admin/settings", icon:   Wrench,      // for settings / to be added
+ },
 ];
 export function AppSidebar() {
     return (
