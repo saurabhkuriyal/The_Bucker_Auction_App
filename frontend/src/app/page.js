@@ -23,7 +23,7 @@ export default function Home() {
     // Fetch flyer data from the backend
     const fetchFlyer = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/flyer/getFlyer');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/flyer/getFlyer`);
         console.log("Flyer data:------", response.data.flyers);
 
         setImage(response.data.flyers.imageUrl);

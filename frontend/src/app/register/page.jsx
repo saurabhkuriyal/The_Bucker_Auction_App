@@ -29,7 +29,7 @@ export default function page() {
 
         // Send data to backend
         try {
-            const response = await axios.post('http://localhost:5000/api/users/register', formData);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/users/register`, formData);
             console.log("Server response:", response);
 
             if(response.data.success === true) {

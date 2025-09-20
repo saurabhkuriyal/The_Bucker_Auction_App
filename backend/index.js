@@ -11,7 +11,7 @@ const userRoutes = require('./routes/user.route');
 
 port = process.env.PORT || 5000;
 app.use(cors({
-  origin: "http://localhost:3000/",
+  origin: "http://localhost:3000",
   credentials: true
 }));
 app.use(bodyParser.json());
