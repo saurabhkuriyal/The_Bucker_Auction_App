@@ -205,16 +205,24 @@ export default function Example() {
                                 </Link>
 
                             </div>
-                            <div className="py-6">
+                            <div className="py-6 flex gap-1">
+                                <Link href="/register" className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    <Button
+                                        variant="outline"
+                                        className="mx-1"
+                                    >
+                                        Register
+                                    </Button>
+                                </Link>
                                 <Link
-                                    href="#"
+                                    href="/login"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                                 >
                                     <Button
                                         variant="default"
                                         className="bg-[#426C6B] text-white hover:bg-[#325251]"
                                     >
-                                        Log in 
+                                        Log in
                                     </Button>
                                 </Link>
                             </div>
