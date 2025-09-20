@@ -5,24 +5,29 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 const connectDB = require('./utils/db');
-const flyerRoutes=require("./routes/flyer.route")
+const flyerRoutes = require("./routes/flyer.route")
 
 const userRoutes = require('./routes/user.route');
 
 port = process.env.PORT || 5000;
 app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true
+    origin: ["http://localhost:3000",
+        "https://the-bucker-auction-app.vercel.app"
+
+    ],
+    credentials: true
 }));
 app.use(bodyParser.json());
 
 // Import routes
 app.use('/api/users', userRoutes);
-app.use('/api/flyer',flyerRoutes);
+app.use('/api/flyer', flyerRoutes);
 
 app.get("/", (req, res) => {
     res.send("API is running....");
 });
+
+//https://the-bucker-auction-app.vercel.app/
 
 connectDB().then(() => {
     app.listen(port, () => {
