@@ -2,7 +2,10 @@
 
 import axios from 'axios';
 import parse from 'html-react-parser';
-import JoditEditor from 'jodit-react';
+import dynamic from "next/dynamic";
+
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
+//import JoditEditor from 'jodit-react';
 import {
     FileText,
     Image as ImageIcon,
