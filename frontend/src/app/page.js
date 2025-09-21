@@ -3,6 +3,7 @@
 import { useAppSelector } from "@/lib/hooks";
 import axios from "axios";
 import parse from 'html-react-parser';
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -92,12 +93,12 @@ export default function Home() {
         <hr className="w-full max-w-sm border-gray-300 mb-6" />
 
         {/* Past Sale Results */}
-        <a
-          href="#"
+        <Link
+          href="/underdevelopment"
           className="text-blue-900 font-bold underline hover:text-blue-700 text-lg"
         >
           View Past Sale Results
-        </a>
+        </Link>
 
         {/* Divider */}
         <hr className="w-full max-w-sm border-gray-300 mt-6" />
