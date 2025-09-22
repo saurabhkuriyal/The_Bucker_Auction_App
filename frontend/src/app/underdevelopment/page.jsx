@@ -75,7 +75,7 @@ export default function Page() {
                 {/* Helpful links */}
                 <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
                     <Link
-                        href="/admin"
+                        href="/"
                         className="group rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md"
                     >
                         <div className="flex items-center justify-between">
