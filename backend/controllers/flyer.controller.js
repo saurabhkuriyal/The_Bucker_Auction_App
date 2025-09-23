@@ -7,6 +7,7 @@ async function createFlyer(req,res) {
         console.log("reached here in flyer controller",req.body);
         console.log("file details",req.file);
 
+        //for storing image in cloudinary
         flyerImage = "";
         if (req.file) {
             cloudinary.config({
