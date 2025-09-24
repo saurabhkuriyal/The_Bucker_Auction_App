@@ -60,6 +60,7 @@ export default function Page() {
 
   // --- UI ---
   return (
+    <div>
     <div className="w-full space-y-6 lg:space-y-8">
       {/* Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -238,6 +239,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }
