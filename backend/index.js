@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     res.send("API is running....");
 });
 
-//https://the-bucker-auction-app.vercel.app/
+
 
 connectDB().then(() => {
     app.listen(port, () => {
