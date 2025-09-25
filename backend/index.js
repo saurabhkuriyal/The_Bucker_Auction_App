@@ -13,7 +13,6 @@ port = process.env.PORT || 5000;
 app.use(cors({
     origin: ["http://localhost:3000",
         "https://the-bucker-auction-app.vercel.app"
-
     ],
     credentials: true
 }));
@@ -23,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/api/users', userRoutes);
 app.use('/api/flyer', flyerRoutes);
 
+//testing route for verifying api
 app.get("/", (req, res) => {
     res.send("API is running....");
 });
