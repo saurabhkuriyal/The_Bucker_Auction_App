@@ -17,7 +17,7 @@ async function createFlyer(req,res) {
             });
 
             const result = await cloudinary.uploader.upload(req.file.path);
-            console.log(result.secure_url, 'uploaded.secure_url');
+            //console.log(result.secure_url, 'uploaded.secure_url');
             flyerImage = result.secure_url;
         }        
 
