@@ -42,7 +42,7 @@ async function loginUser(req,res) {
 
         //console.log("reacher here",req.body);
         
-
+        //email and password are required
         if(!email || !password) {
             return res.status(400).json({success:false,message: "Email and password are required"});
         }
