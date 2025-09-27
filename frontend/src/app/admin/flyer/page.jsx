@@ -79,14 +79,16 @@ export default function Page() {
                 alert("Failed to create flyer. Please try again.");
             }
 
-            console.log("there is the descritpin----", description);
+            console.log("there is the descritpion----", description);
 
 
             // reset
             setTitle("");
             setDescription("");
             removeImage();
+
         } catch (err) {
+            
             console.error(err);
             alert("Something went wrong.");
         } finally {
