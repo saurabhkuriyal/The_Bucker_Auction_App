@@ -88,7 +88,7 @@ export default function Page() {
             removeImage();
 
         } catch (err) {
-            
+            //if something went wrong
             console.error(err);
             alert("Something went wrong.");
         } finally {
