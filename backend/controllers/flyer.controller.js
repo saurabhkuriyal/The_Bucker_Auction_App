@@ -48,7 +48,7 @@ async function getFlyers(req, res) {
     try {
         const flyers = await Flyer.findOne().sort({ createdAt: -1 });
 
-        console.log("Fetched flyers:", flyers);
+       // console.log("Fetched flyers:", flyers);
         
         return res.status(200).json({ success: true, flyers });
     }   catch (error) {
