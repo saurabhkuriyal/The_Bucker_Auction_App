@@ -55,7 +55,7 @@ async function loginUser(req,res) {
 
         // Check password
         if(user.password !== password) {
-            return res.status(400).json({success:false,message: "Invalid email or password"});
+            return res.status(400).json({success:false,message: "Invalid password"});
         }
 
         
@@ -81,5 +81,5 @@ async function getAllUser(req, res) {
 
 module.exports = { registerUser,
                 loginUser,
-                getAllUser
+                getAllUser,
  };
