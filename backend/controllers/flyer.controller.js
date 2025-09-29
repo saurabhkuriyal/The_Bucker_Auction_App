@@ -57,5 +57,5 @@ async function getFlyers(req, res) {
     }
 }
 module.exports = { createFlyer,
-    getFlyers
+    getFlyers,
  };
