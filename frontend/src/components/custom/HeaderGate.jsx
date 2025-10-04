@@ -10,18 +10,5 @@ export default function HeaderGate() {
         return <Header />;
                 
     }
-    // return (
-    //     <div>
-    //         {role === "ADMIN" ?
-    //             <div className="container mx-auto px-4">
-    //                 {children}
-    //             </div>
-    //             :
-    //             <div className="container mx-auto px-4">
-    //                 <Header />
-    //                 {children}
-    //             </div>
-    //         }
-    //     </div>
-    //)
+   
 }
