@@ -93,7 +93,7 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
 
   // ---------- UI ----------
   return (
-    <div className="w-full">
+    <>    <div className="w-full">
       {/* Top bar: title + search (mobile friendly) */}
       <div className="mb-3 flex flex-col gap-3 sm:mb-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-lg font-semibold tracking-tight sm:text-xl">Users</h1>
@@ -330,5 +330,7 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
         </div>
       )}
     </div>
+    </>
+
   );
 }
