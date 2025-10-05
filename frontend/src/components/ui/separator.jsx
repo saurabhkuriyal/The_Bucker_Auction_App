@@ -1,9 +1,8 @@
 "use client"
 
-import * as React from "react"
-import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Separator({
   className,
@@ -11,6 +10,8 @@ function Separator({
   decorative = true,
   ...props
 }) {
+
+  //Separator component for dividing content, can be horizontal or vertical.
   return (
     <SeparatorPrimitive.Root
       data-slot="separator"
@@ -24,4 +25,5 @@ function Separator({
   );
 }
 
-export { Separator }
+export { Separator };
+
