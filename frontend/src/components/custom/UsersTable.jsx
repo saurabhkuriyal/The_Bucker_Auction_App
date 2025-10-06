@@ -91,7 +91,7 @@ export default function UsersTable({ initialUsers = [], apiBase = "http://localh
     }
   };
 
-  // ---------- UI ----------
+  // ---------- UI for the Udrt zysblr ----------------
   return (
     <>
       <div className="w-full">
