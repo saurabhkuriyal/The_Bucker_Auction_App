@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+//intilization id user states
 const initialState={
     userId:"",
     username:"",
