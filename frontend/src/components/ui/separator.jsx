@@ -13,6 +13,7 @@ function Separator({
 
   //Separator component for dividing content, can be horizontal or vertical.
   return (
+    <>
     <SeparatorPrimitive.Root
       data-slot="separator"
       decorative={decorative}
@@ -22,6 +23,7 @@ function Separator({
         className
       )}
       {...props} />
+      </>
   );
 }
 
