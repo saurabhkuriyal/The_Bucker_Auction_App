@@ -12,7 +12,7 @@ const upload = multer({
 });
 
 router.use(bodyParser.json());
-
+//route to create the flyer
 router.route("/createflyer").post(upload.single('image'), flyerController.createFlyer);
 //route to get the flyer
 router.route("/getFlyer").get(flyerController.getFlyers);
