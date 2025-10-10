@@ -4,7 +4,7 @@ const router = express.Router();
 const userController = require('../controllers/user.controller');
 
 router.use(bodyParser.json());
-
+// eoute for login
 router.route("/register").post(userController.registerUser);
 
 router.route("/login").post(userController.loginUser);
