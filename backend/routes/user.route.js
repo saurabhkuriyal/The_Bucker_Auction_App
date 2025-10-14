@@ -8,7 +8,7 @@ router.use(bodyParser.json());
 router.route("/register").post(userController.registerUser);
 //route for registration
 router.route("/login").post(userController.loginUser);
-
+//route for getting all users
 router.route("/getAllUser").get(userController.getAllUser);
 
 module.exports = router;
