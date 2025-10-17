@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
+//function for skeleton loading effect
 function Skeleton({
   className,
   ...props
@@ -12,4 +13,5 @@ function Skeleton({
   );
 }
 
-export { Skeleton }
+export { Skeleton };
+
