@@ -22,6 +22,7 @@ function Tooltip({
   );
 }
 
+// function for tool trip trigger
 function TooltipTrigger({
   ...props
 }) {
